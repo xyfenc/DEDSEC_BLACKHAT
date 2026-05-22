@@ -1,0 +1,5 @@
+# One URL per line.
+https://search.brave.com/
+https://duckduckgo.com/
+https://searx.be/
+https://mojeek.com/

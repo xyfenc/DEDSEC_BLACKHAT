@@ -1,0 +1,4 @@
+# One platform hint per line.
+Win32
+MacIntel
+Linux x86_64

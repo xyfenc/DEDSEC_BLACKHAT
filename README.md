@@ -84,11 +84,47 @@ Fingerprint Randomization
 
 
 ### INSTALLATION
-    git clone https://github.com/0xbitx/DEDSEC_BLACKHAT.git
-    cd DEDSEC_BLACKHAT
-    sudo apt-get install -y tor obfs4proxy qutebrowser
-    chmod +x dedsec_blackhat
-    ./dedsec_blackhat
+   git clone https://github.com/0xbitx/DEDSEC_BLACKHAT.git
+   cd DEDSEC_BLACKHAT
+
+   # Linux (Debian/Ubuntu)
+   sudo apt-get install -y tor obfs4proxy chromium
+
+   # Windows/macOS:
+   # - Install Tor Expert Bundle (tor + lyrebird/obfs4proxy)
+   # - Install Chrome or Firefox
+
+### CONFIGURATION
+The config-only release requires these files under the config folder:
+
+   config/user_agents.txt
+   config/start_urls.txt
+   config/platforms.txt
+   config/screen_resolutions.txt
+   config/fallback_bridges.txt
+
+### USAGE
+   # Config-only release (recommended for publishing)
+   python BH_browser.py
+
+   # Full script with embedded defaults
+   python bh.py
+
+   # Optional flags
+   # --verify  : verify Tor exit IP after bootstrap
+   # --bridge  : skip bridge fetch, use fallback list
+   # --no-tor  : launch without Tor (plain mode)
+
+### OBFUSCATION (CUSTOM)
+This repo includes a small obfuscator that wraps BH_browser.py into a self-executing file.
+It is a deterrent, not strong encryption. Do not ship the original source with releases.
+
+   python tools/obfuscate.py --input BH_browser.py --output dist/BH_browser_obf.py
+
+Ship the config folder next to the obfuscated file:
+
+   dist/BH_browser_obf.py
+   config/
     
 ### TESTED ON FOLLOWING
 * Kali Linux 
